@@ -18,7 +18,7 @@ import { updateSEOMetadata } from './utils/seo';
 
 export default function App() {
   const [route, setRoute] = useState<'blog' | 'services' | 'about' | 'admin'>(() => {
-    if (typeof window !== 'undefined' && window.location.pathname.startsWith('/admin')) {
+    if (typeof window !== 'undefined' && window.location.pathname.includes('/admin')) {
       return 'admin';
     }
     return 'blog';
@@ -36,7 +36,7 @@ export default function App() {
   // Handle URL popstate or pathname changes
   useEffect(() => {
     const handleLocationChange = () => {
-      if (window.location.pathname.startsWith('/admin')) {
+      if (window.location.pathname.includes('/admin')) {
         setRoute('admin');
       }
     };
@@ -71,7 +71,7 @@ export default function App() {
           >
             <div className="brand-mark">GIF</div>
             <div>
-              <div className="brand-title">HALLIZAR.DEV</div>
+              <div className="brand-title">HALLIZAR.RU</div>
               <div className="brand-subtitle">ENGINEERING & TOOLS</div>
             </div>
           </div>
@@ -245,7 +245,7 @@ export default function App() {
         {route === 'about' && (
           <div className="max-w-3xl mx-auto border border-[#282834] bg-[#09090e] p-8 font-mono text-xs text-[#cfcfd6] space-y-6">
             <h1 className="text-2xl font-bold font-sans text-white">
-              О платформе Hallizar.dev
+              О платформе Hallizar
             </h1>
 
             <p className="text-sm leading-relaxed text-[#9898a4]">
@@ -256,14 +256,14 @@ export default function App() {
               <div className="p-4 border border-[#22222a] bg-[#060608]">
                 <strong className="text-white block mb-1 font-sans text-sm">Стек технологий</strong>
                 <p className="text-[11px] text-[#777] m-0 leading-relaxed">
-                  Astro 5 (SSG), Tailwind CSS, React Islands, WebAssembly (gifski-wasm), Decap CMS, Netlify.
+                  Astro 5 (SSG), Tailwind CSS, React Islands, WebAssembly (gifski-wasm), Decap CMS, GitHub Pages.
                 </p>
               </div>
 
               <div className="p-4 border border-[#22222a] bg-[#060608]">
                 <strong className="text-white block mb-1 font-sans text-sm">Контакты &amp; Код</strong>
                 <p className="text-[11px] text-[#777] m-0 leading-relaxed">
-                  Открытый исходный код и статьи об архитектуре фронтенда и графике.
+                  Открытый исходный код: https://github.com/hallizar/BLOG
                 </p>
               </div>
             </div>
@@ -278,7 +278,7 @@ export default function App() {
             <div className="w-5 h-5 bg-[#8a00ff] text-white text-[10px] font-bold grid place-items-center">
               G
             </div>
-            <span className="text-[#ccc] font-bold">HALLIZAR.DEV</span>
+            <span className="text-[#ccc] font-bold">HALLIZAR.RU</span>
             <span>&middot; Автономный блог и веб-сервисы</span>
           </div>
 

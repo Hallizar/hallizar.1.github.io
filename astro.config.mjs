@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 // Canonical production URL
-const site = 'https://hallizar.dev';
+const site = 'https://hallizar.ru';
 
 /**
  * Dynamically extract all blog post slugs from Astro Content Collections (src/content/posts)

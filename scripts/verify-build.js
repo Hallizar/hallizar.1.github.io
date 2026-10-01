@@ -25,7 +25,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
 const POSTS_DIR = path.join(ROOT, 'src/content/posts');
 const ADS_DIR = path.join(ROOT, 'src/content/ads');
-const SITE = 'https://hallizar.dev';
+const SITE = 'https://hallizar.ru';
 const RSN_SDK_URL = 'yandex.ru/ads/system/context.js';
 const REQUIRED_AD_FIELDS = ['id', 'title', 'slot', 'imageUrl', 'targetUrl', 'active', 'priority'];
 

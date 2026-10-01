@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: hallizar/BLOG
   branch: main
 
 # Asset and media storage
@@ -7,8 +8,8 @@ media_folder: 'public/assets/uploads'
 public_folder: '/assets/uploads'
 
 # Site display URLs
-site_url: 'https://hallizar.dev'
-display_url: 'https://hallizar.dev'
+site_url: 'https://hallizar.ru'
+display_url: 'https://hallizar.ru'
 logo_url: '/favicon.svg'
 
 # Managed Content Collections

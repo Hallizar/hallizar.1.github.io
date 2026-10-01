@@ -63,7 +63,7 @@ export interface SEOMetadata {
   schemaJsonLd: Record<string, unknown>;
 }
 
-const DEFAULT_SITE_URL = 'https://hallizar.dev';
+const DEFAULT_SITE_URL = 'https://hallizar.ru';
 const DEFAULT_TITLE = 'Hallizar Studio — Modern Web Engineering & Local GIF Studio';
 const DEFAULT_DESCRIPTION = 'Инженерный блог о современной веб-разработке, WebAssembly, Astro SSG и локальных инструментах без серверного бэкенда.';
 const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&auto=format&fit=crop&q=80';

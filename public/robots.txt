@@ -3,5 +3,5 @@ Allow: /
 Disallow: /admin/
 Disallow: /admin
 
-Sitemap: https://hallizar.dev/sitemap.xml
-Sitemap: https://hallizar.dev/sitemap-index.xml
+Sitemap: https://hallizar.ru/sitemap.xml
+Sitemap: https://hallizar.ru/sitemap-index.xml

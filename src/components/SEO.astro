@@ -6,7 +6,7 @@ export interface Props extends SEOOptions {}
 const props = Astro.props;
 
 // Determine site URL and current pathname from Astro globals at SSG build time
-const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://hallizar.dev';
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://hallizar.ru';
 const pathname = Astro.url ? Astro.url.pathname : '/';
 
 // Construct standardized SEO metadata natively at build time via getSEOMetadata utility
