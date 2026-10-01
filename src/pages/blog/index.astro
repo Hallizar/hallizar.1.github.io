@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AdBanner from '../../components/AdBanner.astro';
+import '../../styles/blog.css';
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft))
+  .map((post) => ({ post, pubDate: post.data.pubDate ?? post.data.date ?? new Date(0) }))
+  .sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());
+---
+
+<BaseLayout
+  title="Блог — Hallizar"
+  description="Инженерный блог о современной веб-разработке, WebAssembly, Astro SSG, SEO и монетизации через РСЯ."
+  pathname="/blog"
+  type="website"
+>
+  <div class="mx-auto max-w-6xl px-4 py-6">
+    <AdBanner slot="top-header" />
+
+    <h1 class="mt-4 mb-6 text-3xl font-extrabold text-white">Блог</h1>
+
+    <ul class="grid gap-4 md:grid-cols-2">
+      {posts.map(({ post, pubDate }) => (
+        <li class="rounded-xs border border-[#2a2a34] bg-[#0a0a0f] p-4 transition-colors hover:border-[#8a00ff]/60">
+          <a href={`/blog/${post.id}`} class="block">
+            {post.data.category && (
+              <span class="font-mono text-[10px] uppercase tracking-wider text-[#bd5aff]">{post.data.category}</span>
+            )}
+            <h2 class="mt-1 text-lg font-bold leading-snug text-white">{post.data.title}</h2>
+            <p class="mt-2 text-sm text-[#a2a2aa]">{post.data.description}</p>
+            <time class="mt-3 block font-mono text-xs text-[#6c6c76]" datetime={pubDate.toISOString()}>
+              {pubDate.toLocaleDateString('ru-RU', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </time>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</BaseLayout>
