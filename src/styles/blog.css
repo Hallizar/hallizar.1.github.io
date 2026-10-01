@@ -61,3 +61,36 @@
   padding: 0;
   background: transparent;
 }
+
+.prose-post img {
+  margin: 1.5rem auto;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #22222c;
+  background: #07070b;
+}
+
+.prose-post figure {
+  margin: 1.5rem 0;
+  border: 1px solid #22222c;
+  background: #07070b;
+  overflow: hidden;
+}
+
+.prose-post figure img {
+  margin: 0;
+  border: none;
+  width: 100%;
+}
+
+.prose-post figcaption {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  color: #80808c;
+  text-align: center;
+  font-family: 'DM Mono', monospace;
+  background: #09090e;
+  border-top: 1px solid #181822;
+}
+

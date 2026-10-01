@@ -156,6 +156,35 @@ export function BlogPostView({
               </h4>
             );
           }
+          // Markdown Image syntax: ![alt text](url)
+          const imgMatch = paragraph.match(/^!\[(.*?)\]\((.*?)\)$/);
+          if (imgMatch) {
+            const alt = imgMatch[1];
+            const src = imgMatch[2];
+            return (
+              <figure key={index} className="my-6 border border-[#22222c] bg-[#07070b] overflow-hidden rounded-xs">
+                <img
+                  src={src}
+                  alt={alt || post.title}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto object-cover max-h-[600px] border-b border-[#181822]"
+                />
+                {alt && (
+                  <figcaption className="p-2.5 text-center text-xs text-[#80808c] font-mono bg-[#09090e]">
+                    {alt}
+                  </figcaption>
+                )}
+              </figure>
+            );
+          }
+          if (paragraph.startsWith('> ')) {
+            return (
+              <blockquote key={index} className="border-l-2 border-[#bd5aff] bg-[#0f0a18]/40 px-4 py-2.5 my-3 text-xs text-[#d8d8e2] italic">
+                {paragraph.replace(/^>\s*/, '')}
+              </blockquote>
+            );
+          }
           if (paragraph.startsWith('```')) {
             const lines = paragraph.split('\n');
             const code = lines.slice(1, -1).join('\n');
