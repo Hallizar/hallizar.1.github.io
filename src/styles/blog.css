@@ -1,16 +1,28 @@
 @import 'tailwindcss';
 
+.prose-post h1,
+.prose-post h2,
+.prose-post h3,
+.prose-post h4,
+.prose-post h5,
+.prose-post h6 {
+  color: #ffffff;
+}
+
 .prose-post h2 {
   margin: 2rem 0 0.75rem;
   font-size: 1.5rem;
   font-weight: 800;
-  color: #fff;
 }
 .prose-post h3 {
   margin: 1.5rem 0 0.5rem;
   font-size: 1.15rem;
   font-weight: 700;
-  color: #fff;
+}
+.prose-post h4 {
+  margin: 1.25rem 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
 }
 .prose-post p,
 .prose-post ul,

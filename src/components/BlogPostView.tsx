@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ArrowLeft, Calendar, Clock, Eye, Share2, Tag, Check } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, Share2, Tag, Check } from 'lucide-react';
 import { BlogPost, AdBannerItem, MetrikaEvent } from '../types';
 import { AdBanner } from './AdBanner';
 
@@ -99,14 +99,6 @@ export function BlogPostView({
           <span className="flex items-center gap-1 text-[#787884]">
             <Clock size={11} /> {post.readingTime}
           </span>
-          {post.views && (
-            <>
-              <span>·</span>
-              <span className="flex items-center gap-1 text-[#787884]">
-                <Eye size={11} /> {post.views} просмотров
-              </span>
-            </>
-          )}
         </div>
 
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-sans text-white leading-tight tracking-tight mb-4">
@@ -152,9 +144,16 @@ export function BlogPostView({
           }
           if (paragraph.startsWith('### ')) {
             return (
-              <h3 key={index} className="text-base font-bold font-sans text-[#bd5aff] mt-6 mb-2">
+              <h3 key={index} className="text-base font-bold font-sans text-white mt-6 mb-2">
                 {paragraph.replace('### ', '')}
               </h3>
+            );
+          }
+          if (paragraph.startsWith('#### ')) {
+            return (
+              <h4 key={index} className="text-sm font-bold font-sans text-white mt-4 mb-2">
+                {paragraph.replace('#### ', '')}
+              </h4>
             );
           }
           if (paragraph.startsWith('```')) {

@@ -5,7 +5,6 @@ import {
   Clock,
   ArrowRight,
   TrendingUp,
-  Eye,
   BookOpen,
 } from 'lucide-react';
 import { BlogPost, AdBannerItem, MetrikaEvent } from '../types';
@@ -33,7 +32,7 @@ export function BlogList({
   }, [posts]);
 
   const trendingPosts = useMemo(() => {
-    return [...posts].sort((a, b) => (b.views ?? 0) - (a.views ?? 0)).slice(0, 3);
+    return [...posts].slice(0, 3);
   }, [posts]);
 
   const filteredPosts = useMemo(() => {
@@ -94,10 +93,10 @@ export function BlogList({
               <article
                 key={post.id}
                 onClick={() => onSelectPost(post)}
-                className="group border border-[#262632] hover:border-[#8a00ff]/70 bg-[#09090e] rounded-xs overflow-hidden cursor-pointer transition-all hover:-translate-y-0.5 shadow-sm"
+                className="group border border-[#262632] hover:border-[#8B03FD]/70 bg-[#09090e] rounded-xs overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 shadow-sm isolate"
               >
                 {/* Article Preview Image Header */}
-                <div className="relative w-full h-44 sm:h-52 overflow-hidden bg-[#06060a] border-b border-[#1f1f28]">
+                <div className="relative w-full h-44 sm:h-52 overflow-hidden bg-[#09090e] isolate">
                   <img
                     src={
                       post.image ||
@@ -110,21 +109,21 @@ export function BlogList({
                       (e.currentTarget as HTMLImageElement).src =
                         'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&auto=format&fit=crop&q=80';
                     }}
-                    className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-500 ease-out will-change-transform group-hover:scale-105"
                   />
-                  {/* Subtle dark gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#09090e] via-[#09090e]/25 to-transparent pointer-events-none" />
+                  {/* Stable dark gradient overlay: solid at bottom, extends 3px below to prevent any subpixel seam */}
+                  <div className="absolute inset-x-0 -bottom-[3px] top-0 bg-gradient-to-t from-[#09090e] from-20% via-[#09090e]/40 to-transparent pointer-events-none z-10" />
 
                   {/* Floating Category Badge */}
-                  <div className="absolute top-3 left-3 pointer-events-none">
+                  <div className="absolute top-3 left-3 pointer-events-none z-20">
                     <span className="px-2.5 py-1 bg-[#09090e]/90 backdrop-blur-md border border-[#2b2b38] text-[9px] font-mono font-bold uppercase tracking-wider text-[#bd5aff] shadow-sm">
                       {post.category}
                     </span>
                   </div>
                 </div>
 
-                {/* Card Body */}
-                <div className="p-5">
+                {/* Card Body: relative z-20 with background matching gradient base to lock seam */}
+                <div className="relative z-20 -mt-[2px] p-5 bg-[#09090e] border-t border-[#1f1f28]">
                   <div className="flex items-center gap-2 text-[9px] font-mono text-[#666672] mb-2">
                     <span className="flex items-center gap-1">
                       <Calendar size={10} /> {post.date}
@@ -198,7 +197,7 @@ export function BlogList({
                       {post.title}
                     </h4>
                     <span className="text-[9px] text-[#555] flex items-center gap-1 mt-0.5">
-                      <Eye size={9} /> {post.views} просмотров
+                      <Clock size={9} /> {post.readingTime}
                     </span>
                   </div>
                 </div>

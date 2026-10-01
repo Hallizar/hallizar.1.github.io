@@ -22,10 +22,10 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
 
     <ul class="grid gap-6 md:grid-cols-2">
       {posts.map(({ post, pubDate }) => (
-        <li class="group rounded-xs border border-[#2a2a34] bg-[#0a0a0f] overflow-hidden transition-all hover:border-[#8a00ff]/60 hover:-translate-y-0.5 shadow-sm">
+        <li class="group rounded-xs border border-[#2a2a34] bg-[#0a0a0f] overflow-hidden transition-all duration-300 hover:border-[#8B03FD]/60 hover:-translate-y-1 shadow-sm isolate">
           <a href={`/blog/${post.id}`} class="block">
             {/* Preview image */}
-            <div class="relative w-full h-44 sm:h-48 overflow-hidden bg-[#06060a] border-b border-[#1f1f28]">
+            <div class="relative w-full h-44 sm:h-48 overflow-hidden bg-[#0a0a0f] isolate">
               <img
                 src={
                   post.data.heroImage ||
@@ -35,11 +35,11 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
                 alt={post.data.title}
                 loading="lazy"
                 decoding="async"
-                class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                class="w-full h-full object-cover transition-transform duration-500 ease-out will-change-transform group-hover:scale-105"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0f] via-[#0a0a0f]/20 to-transparent" />
+              <div class="absolute inset-x-0 -bottom-[3px] top-0 bg-gradient-to-t from-[#0a0a0f] from-20% via-[#0a0a0f]/40 to-transparent pointer-events-none z-10" />
               {post.data.category && (
-                <div class="absolute top-3 left-3">
+                <div class="absolute top-3 left-3 pointer-events-none z-20">
                   <span class="px-2.5 py-1 bg-[#0a0a0f]/90 backdrop-blur-md border border-[#2a2a38] font-mono text-[9px] font-bold uppercase tracking-wider text-[#bd5aff] shadow-sm">
                     {post.data.category}
                   </span>
@@ -47,7 +47,7 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
               )}
             </div>
 
-            <div class="p-5">
+            <div class="relative z-20 -mt-[2px] p-5 bg-[#0a0a0f] border-t border-[#1f1f28]">
               <h2 class="text-lg font-bold leading-snug text-white transition-colors group-hover:text-[#bd5aff]">{post.data.title}</h2>
               <p class="mt-2 text-xs leading-relaxed text-[#a2a2aa] line-clamp-2">{post.data.description}</p>
               <div class="mt-4 flex items-center justify-between border-t border-[#181820] pt-3 text-xs">
