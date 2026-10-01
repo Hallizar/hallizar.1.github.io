@@ -15,6 +15,7 @@ import { BlogPostView } from './components/BlogPostView';
 import { AdBanner } from './components/AdBanner';
 import { DecapAdminStandalone } from './components/DecapAdminStandalone';
 import { updateSEOMetadata } from './utils/seo';
+import { Logo } from './components/Logo';
 
 export default function App() {
   const [route, setRoute] = useState<'blog' | 'services' | 'about' | 'admin'>(() => {
@@ -67,9 +68,11 @@ export default function App() {
               setRoute('blog');
               setSelectedPost(null);
             }}
-            className="topbar-brand cursor-pointer flex items-center gap-3"
+            className="topbar-brand cursor-pointer flex items-center gap-3 group"
           >
-            <div className="brand-mark">GIF</div>
+            <div className="brand-mark">
+              <Logo size={28} color="#ffffff" className="transition-transform duration-200 group-hover:scale-105" />
+            </div>
             <div>
               <div className="brand-title">HALLIZAR.RU</div>
               <div className="brand-subtitle">ENGINEERING & TOOLS</div>
@@ -274,9 +277,9 @@ export default function App() {
       {/* Clean Footer */}
       <footer className="border-t border-[#24242e] bg-[#07070a] py-8 px-6 mt-12 text-center text-xs font-mono text-[#666]">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <div className="w-5 h-5 bg-[#8a00ff] text-white text-[10px] font-bold grid place-items-center">
-              G
+          <div className="flex items-center gap-2.5">
+            <div className="flex items-center justify-center text-white shrink-0">
+              <Logo size={16} color="#ffffff" />
             </div>
             <span className="text-[#ccc] font-bold">HALLIZAR.RU</span>
             <span>&middot; Автономный блог и веб-сервисы</span>

@@ -109,9 +109,9 @@ export function AdBanner({
         className="partner-link block h-full w-full focus:outline-none"
       >
         {slot === 'top-header' ? (
-          // Compact Leaderboard
+          // Compact Leaderboard — Clean non-overlapping layout
           <div className="flex flex-col sm:flex-row items-center justify-between p-3 gap-4">
-            <div className="flex items-center gap-3.5 min-w-0">
+            <div className="flex items-center gap-3.5 min-w-0 flex-1">
               <img
                 src={ad.imageUrl}
                 alt={ad.title}
@@ -128,9 +128,9 @@ export function AdBanner({
               </div>
             </div>
 
-            <div className="shrink-0 flex items-center gap-2">
-              <span className="ui-button primary text-[10px] py-1 px-3 whitespace-nowrap">
-                Подробнее ↗
+            <div className="shrink-0 hidden sm:flex items-center gap-2">
+              <span className="text-[11px] font-mono text-[#8a00ff] group-hover:text-[#bd5aff] transition-colors whitespace-nowrap">
+                Перейти ↗
               </span>
             </div>
           </div>
