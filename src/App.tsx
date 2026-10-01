@@ -4,12 +4,15 @@ import {
   Wrench,
   User,
   Sparkles,
+  Crosshair,
+  Archive,
 } from 'lucide-react';
 import { BLOG_POSTS } from './data/posts';
 import { INITIAL_ADS, getActiveAdForSlot } from './data/ads';
 import { BlogPost, AdBannerItem } from './types';
 import { LocalGifStudio } from './components/LocalGifStudio';
 import { ImageConverterTool } from './components/ImageConverterTool';
+import { AreaAnalyzerTool } from './components/AreaAnalyzerTool';
 import { BlogList } from './components/BlogList';
 import { BlogPostView } from './components/BlogPostView';
 import { AdBanner } from './components/AdBanner';
@@ -25,7 +28,7 @@ export default function App() {
     return 'blog';
   });
 
-  const [selectedService, setSelectedService] = useState<'gif-studio' | 'webp-converter'>('gif-studio');
+  const [selectedService, setSelectedService] = useState<'gif-studio' | 'webp-converter' | 'area-analyzer'>('gif-studio');
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
 
   // Active ads for slots (queried at build/runtime from src/content/ads)
@@ -229,17 +232,28 @@ export default function App() {
                       : 'border-[#33333d] bg-[#0c0c12] text-[#888894] hover:text-white'
                   }`}
                 >
-                  WEBP OPTIMIZER
+                  <Archive size={14} />
+                  СЖАТИЕ & ZIP
+                </button>
+
+                <button
+                  onClick={() => setSelectedService('area-analyzer')}
+                  className={`px-4 py-2 border transition-all flex items-center gap-2 ${
+                    selectedService === 'area-analyzer'
+                      ? 'border-[#8a00ff] bg-[#8a00ff] text-white font-bold'
+                      : 'border-[#33333d] bg-[#0c0c12] text-[#888894] hover:text-white'
+                  }`}
+                >
+                  <Crosshair size={14} />
+                  АНАЛИЗАТОР ПЛОЩАДИ
                 </button>
               </div>
             </div>
 
             <div className="border border-[#30303a] bg-[#08080c] p-2 sm:p-4">
-              {selectedService === 'gif-studio' ? (
-                <LocalGifStudio />
-              ) : (
-                <ImageConverterTool />
-              )}
+              {selectedService === 'gif-studio' && <LocalGifStudio />}
+              {selectedService === 'webp-converter' && <ImageConverterTool />}
+              {selectedService === 'area-analyzer' && <AreaAnalyzerTool />}
             </div>
           </div>
         )}
