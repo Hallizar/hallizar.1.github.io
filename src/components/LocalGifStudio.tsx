@@ -660,6 +660,20 @@ export function LocalGifStudio() {
     }
   };
 
+  const startNewProject = () => {
+    Object.values(results).forEach((res) => {
+      if (res.url) URL.revokeObjectURL(res.url);
+    });
+    frames.forEach((f) => {
+      if (f.previewUrl) URL.revokeObjectURL(f.previewUrl);
+    });
+    setFrames([]);
+    setResults({});
+    setRendering({});
+    setStep(1);
+    showToast('Готово к созданию новых GIF');
+  };
+
   const removeFrame = (id: string) => {
     setFrames((current) => {
       const target = current.find((frame) => frame.id === id);
@@ -1324,8 +1338,13 @@ export function LocalGifStudio() {
                   >
                     ИЗМЕНИТЬ ПАРАМЕТРЫ
                   </button>
-                  <button className="ui-button primary next-button" onClick={downloadZip}>
-                    СКАЧАТЬ ПАКЕТ <b>↗</b>
+                  <button
+                    className="ui-button primary next-button"
+                    onClick={startNewProject}
+                    disabled={hasRendering}
+                  >
+                    <ImagePlus size={14} />
+                    СОЗДАТЬ НОВЫЕ GIF <b>+</b>
                   </button>
                 </>
               )}
